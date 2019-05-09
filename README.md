@@ -1,1 +1,21 @@
 # springboot2-auth-seed
+
+## How to use
+### Step 1: get access_token from authorization server
+```bash
+$ curl reader:secret@localhost:8081/oauth/token -d grant_type=password -d username=subject -d password=password
+```
+```bash
+{"access_token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdWJqZWN0IiwiZXhwIjoyMTU3NDIwODA2LCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwianRpIjoiOTcxNGNmODQtOWM1NC00Y2IwLWIzMTMtNjc2ZjY5OTIzNmQxIiwiY2xpZW50X2lkIjoicmVhZGVyIiwic2NvcGUiOlsibWVzc2FnZTpyZWFkIl19.iNaqvBcJJRQMGCTTmXmhtKN-VUcPFdDRb4dkYDyN_Wwyhk7Z6CoLKdVn4g83P9Pg3xqtWqtoaBS4ivkbmNJ5Q34qxbsRnRcsrwPdCknFGrCN95FdFLKuyHvhZc9KU0JHGqh7mEwuhs8nEJCNaAOPdlfcVfIz8oQFJK1fC9qjMQYo-Pi7EVqhpfM9GsIrTUdJtoCaygr532Ebrl2--SX1nDHCqhMkh7oDs8prq02ytr9H22ZtzJU1o9CXzXMKe6nYkszC8PrJuaV1EC8TlJHoNUMYAXJfgFv1HCJaMzUtF1_NcA68F4c-xEnl19yDbaSq4Uhp9DLEXnusLhodxrBYRQ","token_type":"bearer","expires_in":599999999,"scope":"message:read","jti":"9714cf84-9c54-4cb0-b313-676f699236d1"}
+```
+
+### Step 2: with access_token to fetch data from resource server
+```bash
+$ export TOKEN=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdWJqZWN0IiwiZXhwIjoyMTU3NDIwODA2LCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwianRpIjoiOTcxNGNmODQtOWM1NC00Y2IwLWIzMTMtNjc2ZjY5OTIzNmQxIiwiY2xpZW50X2lkIjoicmVhZGVyIiwic2NvcGUiOlsibWVzc2FnZTpyZWFkIl19.iNaqvBcJJRQMGCTTmXmhtKN-VUcPFdDRb4dkYDyN_Wwyhk7Z6CoLKdVn4g83P9Pg3xqtWqtoaBS4ivkbmNJ5Q34qxbsRnRcsrwPdCknFGrCN95FdFLKuyHvhZc9KU0JHGqh7mEwuhs8nEJCNaAOPdlfcVfIz8oQFJK1fC9qjMQYo-Pi7EVqhpfM9GsIrTUdJtoCaygr532Ebrl2--SX1nDHCqhMkh7oDs8prq02ytr9H22ZtzJU1o9CXzXMKe6nYkszC8PrJuaV1EC8TlJHoNUMYAXJfgFv1HCJaMzUtF1_NcA68F4c-xEnl19yDbaSq4Uhp9DLEXnusLhodxrBYRQ
+```
+```bash
+$ curl -H "Authorization: Bearer $TOKEN" localhost:8082
+```
+```bash
+Hello, subject!
+```
