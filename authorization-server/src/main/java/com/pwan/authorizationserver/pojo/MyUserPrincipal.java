@@ -1,11 +1,13 @@
 package com.pwan.authorizationserver.pojo;
 
 import com.pwan.authorizationserver.entity.User;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
+@Slf4j
 public class MyUserPrincipal implements UserDetails {
     private User user;
     public MyUserPrincipal(User user) {
@@ -28,7 +30,7 @@ public class MyUserPrincipal implements UserDetails {
      */
     @Override
     public String getPassword() {
-        return null;
+        return this.user.getPassword();
     }
 
     /**
@@ -38,7 +40,7 @@ public class MyUserPrincipal implements UserDetails {
      */
     @Override
     public String getUsername() {
-        return null;
+        return this.user.getUsername();
     }
 
     /**
@@ -50,7 +52,7 @@ public class MyUserPrincipal implements UserDetails {
      */
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     /**
@@ -61,7 +63,7 @@ public class MyUserPrincipal implements UserDetails {
      */
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     /**
@@ -73,7 +75,7 @@ public class MyUserPrincipal implements UserDetails {
      */
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     /**
@@ -84,6 +86,6 @@ public class MyUserPrincipal implements UserDetails {
      */
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

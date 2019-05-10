@@ -15,6 +15,7 @@
  */
 package com.pwan.authorizationserver.security.converter;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.oauth2.provider.token.DefaultUserAuthenticationConverter;
@@ -28,6 +29,7 @@ import java.util.Map;
  * better to adhere to the {@code sub} property defined in the
  * <a target="_blank" href="https://tools.ietf.org/html/rfc7519">JWT Specification</a>.
  */
+@Slf4j
 public class SubjectAttributeUserTokenConverter extends DefaultUserAuthenticationConverter {
     @Override
     public Map<String, ?> convertUserAuthentication(Authentication authentication) {

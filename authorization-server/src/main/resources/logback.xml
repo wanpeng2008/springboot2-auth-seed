@@ -12,6 +12,10 @@
         <appender-ref ref="CONSOLE"/>
     </logger>
 
+    <logger name="com.pwan.authorizationserver" level="debug" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
     <root level="error">
         <appender-ref ref="CONSOLE"/>
     </root>

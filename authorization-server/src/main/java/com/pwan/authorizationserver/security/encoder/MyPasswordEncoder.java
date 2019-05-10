@@ -1,7 +1,9 @@
 package com.pwan.authorizationserver.security.encoder;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+@Slf4j
 public class MyPasswordEncoder implements PasswordEncoder {
     /**
      * Encode the raw password. Generally, a good encoding algorithm applies a SHA-1 or

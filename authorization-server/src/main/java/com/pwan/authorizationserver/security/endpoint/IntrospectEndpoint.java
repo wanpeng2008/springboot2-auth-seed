@@ -1,5 +1,6 @@
 package com.pwan.authorizationserver.security.endpoint;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.endpoint.FrameworkEndpoint;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
  * This class adds ad-hoc support in order to better support the other samples in the repo.
  */
 @FrameworkEndpoint
+@Slf4j
 class IntrospectEndpoint {
     TokenStore tokenStore;
 

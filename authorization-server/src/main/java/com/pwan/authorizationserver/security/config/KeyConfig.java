@@ -1,5 +1,6 @@
 package com.pwan.authorizationserver.security.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,6 +17,7 @@ import java.security.spec.RSAPublicKeySpec;
  * For simplicity, though, this sample doesn't demonstrate key rotation.
  */
 @Configuration
+@Slf4j
 class KeyConfig {
     @Bean
     KeyPair keyPair() {

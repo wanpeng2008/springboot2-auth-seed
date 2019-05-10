@@ -3,6 +3,7 @@ package com.pwan.authorizationserver.service;
 import com.pwan.authorizationserver.dao.UserRepository;
 import com.pwan.authorizationserver.entity.User;
 import com.pwan.authorizationserver.pojo.MyUserPrincipal;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -10,6 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;

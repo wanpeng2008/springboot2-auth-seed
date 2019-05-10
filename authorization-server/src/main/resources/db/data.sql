@@ -6,10 +6,10 @@
 --                                                                                                                                  3,'孙三','1',24,'142323198610051236','12345678912','qe259@165.com',sysdate,sysdate,'0');
 
 
-INSERT INTO oauth_client_details (client_id, authorized_grant_types, client_secret, scope, access_token_validity) VALUES ( 'reader', 'password', 'secret', 'message:read', 600000000 );
-INSERT INTO oauth_client_details (client_id, authorized_grant_types, client_secret, scope, access_token_validity) VALUES ( 'writer', 'password', 'secret', 'message:write', 600000000 );
-INSERT INTO oauth_client_details (client_id, authorized_grant_types, client_secret, scope, access_token_validity) VALUES ( 'noscopes', 'password', 'secret', 'none', 600000000 );
+INSERT INTO oauth_client_details (client_id, authorized_grant_types, client_secret, scope, access_token_validity) VALUES ( 'reader', 'password', '{noop}secret', 'message:read', 600000000 );
+INSERT INTO oauth_client_details (client_id, authorized_grant_types, client_secret, scope, access_token_validity) VALUES ( 'writer', 'password', '{noop}secret', 'message:write', 600000000 );
+INSERT INTO oauth_client_details (client_id, authorized_grant_types, client_secret, scope, access_token_validity) VALUES ( 'noscopes', 'password', '{noop}secret', 'none', 600000000 );
 
 
-INSERT INTO USER (ID, USERNAME, PASSWORD) VALUES ( 1, 'subject', '{noop}password1' ); --'{noop}password1'
+INSERT INTO USER (ID, USERNAME, PASSWORD) VALUES ( 1, 'subject', '{noop}password' ); --'{noop}password1'
 -- {bcrypt}$2a$10$dXJ3SW6G7P50lGmMkkmwe.20cQQubK3.HZWzG3YB1tlRy.fqvM/BG
