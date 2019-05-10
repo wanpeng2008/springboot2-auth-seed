@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * For configuring the end users recognized by this Authorization Server
@@ -48,6 +49,6 @@ class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         if(log.isDebugEnabled()) {
             log.debug("configure(AuthenticationManagerBuilder auth)");
         }
-        auth.userDetailsService(myUserDetailsService).passwordEncoder(new MyPasswordEncoder());
+        auth.userDetailsService(myUserDetailsService);
     }
 }
