@@ -11,4 +11,12 @@ INSERT INTO oauth_client_details (client_id, authorized_grant_types, client_secr
 INSERT INTO oauth_client_details (client_id, authorized_grant_types, client_secret, scope, access_token_validity) VALUES ( 'noscopes', 'password', '{bcrypt}$2a$10$HJkNYxSoGBplHDxsK8brzOkX2Le2y8mgUvyN8Ol978DBTlSU1UBZa', 'none', 600000000 );
 
 
-INSERT INTO USER (ID, USERNAME, PASSWORD) VALUES ( 1, 'subject', '{bcrypt}$2a$10$Jg6FHegIvGagS1U/4MnlzeyNB/EMxpC74wioHgsghotO8zoJakHnu' ); --'{noop}password'
+INSERT INTO T_USER (ID, USERNAME, PASSWORD) VALUES ( 1, 'subject', '{bcrypt}$2a$10$Jg6FHegIvGagS1U/4MnlzeyNB/EMxpC74wioHgsghotO8zoJakHnu' ); --'{noop}password'
+
+INSERT INTO T_ROLE (ROLE_CODE, ROLE_NAME) VALUES ( 'ADMIN', '管理员' );
+
+INSERT INTO T_PERMISSION (PERMISSION_CODE, PERMISSION_NAME) VALUES ( 'AUTH_ALL', '所有权限' );
+
+INSERT INTO T_USER_ROLE (USER_ID, ROLE_CODE) VALUES ( 1, 'ADMIN' );
+
+INSERT INTO T_ROLE_PERMISSION (ROLE_CODE, PERMISSION_CODE) VALUES ( 'ADMIN', 'AUTH_ALL' );

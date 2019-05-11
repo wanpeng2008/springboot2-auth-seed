@@ -2,17 +2,24 @@ package com.pwan.authorizationserver.pojo;
 
 import com.pwan.authorizationserver.entity.User;
 import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class MyUserPrincipal implements UserDetails {
     private User user;
+
     public MyUserPrincipal(User user) {
         this.user = user;
     }
+
     /**
      * Returns the authorities granted to the user. Cannot return <code>null</code>.
      *
@@ -20,7 +27,12 @@ public class MyUserPrincipal implements UserDetails {
      */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        Set<SimpleGrantedAuthority> fromRoles = user.getRoleList().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRoleCode())).collect(Collectors.toSet());
+        Set<SimpleGrantedAuthority> fromPermissions = user.getRoleList().stream().flatMap(role -> role.getPermissionList().stream().map(permission -> new SimpleGrantedAuthority(permission.getPermissionCode()))).collect(Collectors.toSet());
+        Set<SimpleGrantedAuthority> result = new HashSet<>();
+        result.addAll(fromRoles);
+        result.addAll(fromPermissions);
+        return result;
     }
 
     /**
